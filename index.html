@@ -8,8 +8,20 @@
         <!-- include ar.js for A-Frame -->
         <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
 
+        <style>
+            button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 10;
+                padding: 10px;
+                font-size: 16px;
+            }
+        </style>
+
     </head>
     <body style='margin : 0px; overflow: hidden;'>
+        <button onclick="toggleModel()">Skeleton</button>
         <!-- Initializate ar.js-->
         <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">  
         
@@ -55,7 +67,7 @@
         </a-marker>
 
         <a-marker type='barcode' value='0'>
-            <a-entity gltf-model="#skul" scale="0.5 0.5 0.5"></a-entity>
+            <a-entity id='model' gltf-model="#skul" scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
 
         <a-marker-camera type="pattern" url="patts/pattern-Sistemas.patt">
@@ -66,9 +78,23 @@
             <a-image src="image/Sistemas.png"></a-image>
         </a-marker>
 
+        <!-- Add this in the AR marker -->
+        <button onclick="document.querySelector('#girl').setAttribute('visible', true)">
+            Show Girl
+        </button>
+
+
+
         <!-- Cámara AR -->
         <a-entity camera></a-entity>
         </a-scene>
 
+        <script>
+            let visible = true;
+            function toggleModel() {
+                visible = !visible;
+                document.querySelector('#model').setAttribute('visible', visible);
+            }
+        </script>
     </body>
 </html>
