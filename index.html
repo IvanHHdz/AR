@@ -4,15 +4,24 @@
         <meta charset="UTF-8">
         <title>AR VISOR</title>
         <!-- include A-Frame obviously -->
-        <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
         <!-- include ar.js for A-Frame -->
-        <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
 
     </head>
     <body style='margin : 0px; overflow: hidden;'>
         <!-- Initializate ar.js-->
         <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">  
         
+        <a-assets>
+            <a-asset-item id="girl" src="girl/scene.gltf"></a-asset-item>
+            <a-asset-item id="girl2" src="another_girl/scene.gltf"></a-asset-item>
+            <a-asset-item id="blue" src="blue/scene.gltf"></a-asset-item>
+            <a-asset-item id="dog" src="cachorro/scene.gltf"></a-asset-item>
+            <a-asset-item id="pc" src="computadora/scene.gltf"></a-asset-item>
+            <a-asset-item id="skul" src="esqueleto/scene.gltf"></a-asset-item>
+        </a-assets>
+
         <a-marker preset="hiro">
             <a-text value="Hello, World!" position="-1 0 0" color="blue"></a-text>
         </a-marker>
@@ -25,49 +34,31 @@
             <a-text value="Puerta 1" position="0 0 0" color="green"></a-text>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="girl" src="girl/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='7'>
             <a-entity gltf-model="#girl" scale="0.005 0.005 0.005"></a-entity>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="girl2" src="another_girl/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='4'>
             <a-entity gltf-model="#girl2" scale="0.005 0.005 0.005"></a-entity>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="blue" src="blue/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='3'>
             <a-entity gltf-model="#blue" scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="dog" src="cachorro/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='1'>
             <a-entity gltf-model="#dog" scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="pc" src="computadora/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='2'>
             <a-entity gltf-model="#pc" scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
 
-        <a-assets>
-                <a-asset-item id="skul" src="esqueleto/scene.gltf" ></a-asset-item>
-        </a-assets>
         <a-marker type='barcode' value='0'>
             <a-entity gltf-model="#skul" scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
 
-        <a-marker-camera type="pattern" src="patts/pattern-Sistemas.patt">
+        <a-marker-camera type="pattern" url="patts/pattern-Sistemas.patt">
             <a-image src="image/Sistemas.png"></a-image>
         </a-marker>
 
